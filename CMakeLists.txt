@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 include_directories(banking)
-add_subdirectory(banking)
 
 add_library(lab05 STATIC banking/Account.cpp banking/Transaction.cpp)
 
