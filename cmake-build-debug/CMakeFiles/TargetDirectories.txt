@@ -1,0 +1,6 @@
+/home/augustus/TIMP/lab05/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/augustus/TIMP/lab05/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/augustus/TIMP/lab05/cmake-build-debug/CMakeFiles/lab05.dir
+/home/augustus/TIMP/lab05/cmake-build-debug/banking/CMakeFiles/rebuild_cache.dir
+/home/augustus/TIMP/lab05/cmake-build-debug/banking/CMakeFiles/edit_cache.dir
+/home/augustus/TIMP/lab05/cmake-build-debug/banking/CMakeFiles/banking.dir
