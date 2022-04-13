@@ -129,19 +129,6 @@ lab05/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab05.dir/build.make CMakeFiles/lab05.dir/build
 .PHONY : lab05/fast
 
-#=============================================================================
-# Target rules for targets named banking
-
-# Build rule for target.
-banking: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 banking
-.PHONY : banking
-
-# fast build rule for target.
-banking/fast:
-	$(MAKE) $(MAKESILENT) -f banking/CMakeFiles/banking.dir/build.make banking/CMakeFiles/banking.dir/build
-.PHONY : banking/fast
-
 banking/Account.o: banking/Account.cpp.o
 .PHONY : banking/Account.o
 
@@ -198,7 +185,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... banking"
 	@echo "... lab05"
 	@echo "... banking/Account.o"
 	@echo "... banking/Account.i"
