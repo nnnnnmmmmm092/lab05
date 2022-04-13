@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblab05.a CMakeFiles/lab05.dir/banking/Account.cpp.o CMakeFiles/lab05.dir/banking/Transaction.cpp.o
-/usr/bin/ranlib liblab05.a
