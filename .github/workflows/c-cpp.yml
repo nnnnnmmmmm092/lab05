@@ -22,6 +22,6 @@ jobs:
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
+      run: cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check && cat /home/runner/work/lab05/lab05/_build/CMakeFiles/CMakeOutput.log
 
       
