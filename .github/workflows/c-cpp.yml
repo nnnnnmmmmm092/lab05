@@ -26,5 +26,7 @@ jobs:
     - name: Build
       # Build your program with the given configuration
       run: cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@1.1.3
 
       
