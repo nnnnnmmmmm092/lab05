@@ -21,9 +21,11 @@ jobs:
     - name: Install gtest manuall*y
       run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp -r * /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
     - uses: actions/checkout@v2
+      with:
+          submodules: true
 
     - name: Build
       # Build your program with the given configuration
-      run: git submodule sync --recursive && cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
+      run: git submodule sync --recursive && git submodule update --init --force --recursive --depth=1 && cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
 
       
