@@ -24,6 +24,6 @@ jobs:
 
     - name: Build
       # Build your program with the given configuration
-      run: ls /home/runner/work/lab05/lab05/third-party && cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
+      run: git submodule sync --recursive && cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
 
       
