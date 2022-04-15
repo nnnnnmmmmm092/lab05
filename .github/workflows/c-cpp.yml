@@ -27,11 +27,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.x
+    
+    - name: Install npm dependencies
+      run: npm install 
 
-    - name: npm install, make test-coverage
-      run: |
-        npm install
-        make test-coverage
+    - name: Run lint
+      run: npm run lint
+
+    
+    - name: Run tests
+      run: npm run test-cov
+
 
     - name: Build
       # Build your program with the given configuration
