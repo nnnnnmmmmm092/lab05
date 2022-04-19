@@ -53,7 +53,13 @@ MockTransaction tr;
 EXPECT_THROW(tr.Make(from_acc,from_acc,0),std::logic_error);
 EXPECT_THROW(tr.Make(from_acc,to_acc,0),std::logic_error);
 EXPECT_THROW(tr.Make(from_acc,to_acc,-5),std::invalid_argument);
+}
 
+TEST(Transaction, SaveToDataBase){
+MockAccount from_acc(15,17650);
+MockAccount to_acc(13, 18435);
+MockTransaction tr;
 
 
 }
+
