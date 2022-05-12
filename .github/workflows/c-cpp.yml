@@ -26,4 +26,5 @@ jobs:
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build --target check && _build/check 
+      run: cmake -H. -B _build -DCMAKE_BUILD_TYPE=Debug && cd _build && cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && make && make coveralls
+
