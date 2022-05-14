@@ -1,9 +1,9 @@
-name: Lab05_test
+name: lab05
 
 on:
   push:
       branches: 
-      - lab05_master
+      - main
       
 jobs:
 
@@ -59,7 +59,7 @@ jobs:
           cmake --build .
           ./RunTest
           lcov -t "banking" -o lcov.info -c -d .
-          lcov --remove lcov.info '/home/runner/work/TIMP_Labs/TIMP_Labs/third-party/gtest/*' -o lcov.info ###
+          lcov --remove lcov.info '/home/runner/work/lab05/lab05/third-party/gtest/*' -o lcov.info ###
           lcov --remove lcov.info '/usr/include/*' -o lcov.info
           
       - name: CovBeg
