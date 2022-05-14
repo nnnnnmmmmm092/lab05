@@ -1,39 +1,21 @@
 cmake_minimum_required(VERSION 3.4)
-project(lab05)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/third-party/coveralls-cmake/cmake)
+SET(COVERAGE OFF CACHE BOOL "Coverage")
+SET(CMAKE_CXX_COMPILER "/usr/bin/g++")
 
+project(TestRunning)
 
-include_directories(banking)
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/third-party/gtest" "gtest")
 
-add_library(lab05 STATIC banking/Account.cpp banking/Transaction.cpp)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/banking)
 
-if(COVERALLS)
-	include(Coveralls)
-	coveralls_turn_on_coverage()
+add_executable(RunTest ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp)
+
+if (COVERAGE)
+    target_compile_options(RunTest PRIVATE --coverage)
+    target_link_libraries(RunTest PRIVATE --coverage)
 endif()
 
-if (COVERALLS)
-	set(COVERAGE_SRCS banking/Account.cpp banking/Transaction.cpp)
+target_include_directories(RunTest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/banking)
 
-    # Create the coveralls target.
-    coveralls_setup(
-        "${COVERAGE_SRCS}" # The source files.
-        ON                 # If we should upload.
-	)#"${PROJECT_SOURCE_DIR}/CMakeModules/") # (Optional) Alternate project cmake module path.
-endif()
-
-
-    enable_testing()
-    add_subdirectory(third-party/gtest)
-    file(GLOB ${PROJECT_NAME}_TEST_SOURCES tests/*.cpp)
-    add_executable(check ${${PROJECT_NAME}_TEST_SOURCES})
-    target_link_libraries(check ${PROJECT_NAME} gtest_main gmock)
-    add_test(NAME check COMMAND check)
-
-
-
-
-
+target_link_libraries(RunTest PRIVATE gtest gtest_main gmock_main banking)
