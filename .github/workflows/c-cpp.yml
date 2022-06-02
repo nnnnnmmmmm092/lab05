@@ -35,10 +35,15 @@ jobs:
           mkdir _build && cd _build
           CXX=/usr/bin/g++-7 cmake -DCOVERAGE=1 ..
           cmake --build .
-          ./RunTest
+          ./RunTest >> output.txt
           lcov -t "banking" -o lcov.info -c -d .
           lcov --remove lcov.info '/home/runner/work/lab05/lab05/third-party/gtest/*' -o lcov.info
           lcov --remove lcov.info '/usr/include/*' -o lcov.info
+      - name: Publish
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: _build/output.txt
           
   CovTest:
     runs-on: ubuntu-latest
@@ -64,11 +69,7 @@ jobs:
           lcov --remove lcov.info '/usr/include/*' -o lcov.info
           
           
-      - name: Publish
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifact
-          path: _build/output.txt
+      
           
       - name: CovBeg
         uses: coverallsapp/github-action@master
